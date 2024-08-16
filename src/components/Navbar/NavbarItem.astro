@@ -1,0 +1,19 @@
+---
+interface Props {
+	text: string;
+	class: string;
+	section: string
+}
+
+const { text, section } = Astro.props;
+---
+
+<a class:list={`navbar-item ${Astro.props.class}`} href={`#${section}`}>
+	{text}
+</a>
+
+<style>
+	.navbar-item {
+		cursor: pointer;
+	}
+</style>

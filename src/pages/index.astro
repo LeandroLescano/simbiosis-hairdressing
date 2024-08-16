@@ -1,0 +1,31 @@
+---
+import Layout from '@layouts/Layout.astro';
+import About from '@sections/About.astro';
+import Services from '@sections/Services.astro';
+import Contact from '@sections/Contact.astro';
+import Gallery from '@sections/Gallery.astro';
+---
+
+<Layout title="Simbiosis peluquería">
+	<main>
+		<About />
+		<Services />
+		<Contact />
+		<Gallery />
+	</main>
+</Layout>
+
+<style is:global>
+	main {
+		padding: 60px 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 30px;
+	}
+
+	.main-section {
+		scroll-margin-top: 60px;
+		max-width: 960px;
+	}
+</style>
