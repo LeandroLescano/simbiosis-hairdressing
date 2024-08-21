@@ -1,38 +1,53 @@
 ---
 interface Props {
   label: string;
-  variant?: 'primary' | 'secondary';
+  variant?: "primary" | "secondary";
   fullWidth?: boolean;
   onClick?: string;
   class?: string;
+  href?: string;
 }
 
-const { label, variant = "primary", fullWidth, onClick } = Astro.props;
+const {label, variant = "primary", fullWidth, href, onClick} = Astro.props;
+const Component = href ? "a" : "button";
 ---
 
-<button type="button" onclick={onClick} class={`button ${variant} ${fullWidth && "full-width"} ${Astro.props.class}`}>
+<Component
+  href={href ?? undefined}
+  type="button"
+  onclick={onClick}
+  class={`button ${variant} ${Astro.props.class} ${fullWidth && "full-width"}`}
+>
   {label}
-</button>
+</Component>
 
 <style>
   .button {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    color: #1a1a1a;
   }
 
   .button.primary {
-    background-color: #1A1A1A;
-    color: white;
+    background-color: #03ffff;
+  }
+
+  .button.primary:hover {
+    background-color: #03ffffcc;
   }
 
   .button.secondary {
     background-color: white;
-	border: 1px solid #1A1A1A;
-    color: #1A1A1A;
+    border: 1px solid #1a1a1a;
+  }
+  .button.secondary:hover {
+    background-color: #ffffffcc;
   }
 
   .button.full-width {
-	width: 100%;
+    width: 100%;
   }
 </style>

@@ -1,15 +1,36 @@
 ---
-import Button from "@components/Button.astro"
+import Button from "@components/Button.astro";
 ---
 
-<section class="main-section flex gap-8" id="about">
-
-	<img src="/img/hair-salon.webp" class="object-contain h-fit" width={400} />
-	<article class="flex flex-col place-content-between">
-		<h1 class="font-bold text-5xl"><span class="font-square">SIMBIOSIS</span> desde 2004 </h1>
-		<p class="text-pretty mt-2">SIMBIOSIS es un centro de estética unisex supervisado por sus dueños y atendido por estilistas profesionales que utilizan los mejores productos del mercado internacional para el cuidado de tu belleza integral. Acércate o encuéntranos en nuestras redes sociales para conocer las novedades que nuestro equipo tiene para ofrecerte. Te esperamos!</p>
-		<Button label="Conocé más" fullWidth class="mt-8"/>
-	</article>
-		<!-- <p class="text-center font-square text-4xl tracking-[4px]">SIMBIOSIS</p>
-	<p class="text-center font-square text-base tracking-[10.5px] pl-1">PELUQUERIA</p> -->
+<section
+  id="about"
+  class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black text-white flex justify-center"
+>
+  <div class="container px-4 md:px-6">
+    <div class="flex flex-col items-center space-y-4 text-center">
+      <div class="space-y-2">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl/none -mb-2">
+          <span class="font-square tracking-[4px]">SIMBIOSIS</span>
+        </h1>
+        <span
+          class="text-center -pt-9 font-square text-xl tracking-[5.5px] pl-[1.6px] sm:text-2xl sm:tracking-[5.8px] md:text-3xl md:tracking-[7.8px] md:pl-[3.6px] lg:text-4xl lg:tracking-[9.7px] lg:pl-[5.8px]"
+        >
+          PELUQUERIA
+        </span>
+        <p class="mx-auto max-w-[700px] text-gray-400 md:text-xl">
+          Centro de estética unisex con estilistas profesionales y productos de
+          calidad internacional.
+        </p>
+      </div>
+      <div class="space-x-4">
+        <Button label="Reservar turno" />
+        <Button
+          label="Nuestros servicios"
+          variant="secondary"
+          href="#services"
+          class="text-white border-white hover:bg-white hover:text-black"
+        />
+      </div>
+    </div>
+  </div>
 </section>

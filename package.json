@@ -2,6 +2,11 @@
   "name": "simbiosis-hairdressing",
   "type": "module",
   "version": "0.0.1",
+  "author": {
+    "name": "Leandro Lescano",
+    "email": "leandrolescano11@gmail.com",
+    "url": "https://leanlescano.dev.ar/"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
