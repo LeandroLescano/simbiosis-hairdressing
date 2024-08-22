@@ -12,9 +12,9 @@ import Card from "@/components/Card.astro";
     <div class="grid gap-6 lg:grid-cols-4">
       {
         [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-          <Card class="overflow-hidden">
+          <Card class="overflow-hidden" animated>
             <img
-              src={`/img/placeholder.jpg`}
+              src="https://picsum.photos/600/400.jpg"
               alt={`Hairstyle ${item}`}
               class="w-full h-48 object-cover"
               slot="header"

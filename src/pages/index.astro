@@ -4,6 +4,8 @@ import About from "@sections/About.astro";
 import Services from "@sections/Services.astro";
 import Contact from "@sections/Contact.astro";
 import Gallery from "@sections/Gallery.astro";
+import BusinessHours from "@/sections/BusinessHours.astro";
+import Sponsors from "@/sections/Sponsors.astro";
 ---
 
 <Layout title="Simbiosis peluquería">
@@ -12,16 +14,14 @@ import Gallery from "@sections/Gallery.astro";
     <Services />
     <Gallery />
     <Contact />
+    <BusinessHours />
+    <Sponsors />
   </main>
 </Layout>
 
 <style is:global>
   main {
     flex: 1;
-  }
-
-  .main-section {
-    scroll-margin-top: 30px;
   }
 
   body {
