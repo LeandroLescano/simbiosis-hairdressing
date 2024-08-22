@@ -18,7 +18,9 @@ const {title} = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <header class="sticky top-0 z-50 bg-white">
+    <header
+      class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+    >
       <nav
         class="px-10 py-3 border-b-[1px] flex place-content-between items-center"
       >
@@ -79,6 +81,10 @@ const {title} = Astro.props;
       Bitstream Vera Sans Mono,
       Courier New,
       monospace;
+  }
+  .container {
+    margin-right: auto;
+    margin-left: auto;
   }
   @font-face {
     font-family: Square;
