@@ -1,3 +1,104 @@
-<section class="main-section" id="contact">
-  <p class="text-center text-4xl">CONTACTO</p>
+---
+import Button from "@/components/Button.astro";
+import Card from "@/components/Card.astro";
+import Input from "@/components/Input.astro";
+import TextArea from "@/components/TextArea.astro";
+import MapIcon from "../../public/svgs/map.svg?raw";
+import PhoneIcon from "../../public/svgs/phone.svg?raw";
+import EmailIcon from "../../public/svgs/email.svg?raw";
+import FacebookIcon from "../../public/svgs/facebook.svg?raw";
+import WhatsappIcon from "../../public/svgs/whatsapp.svg?raw";
+import InstagramIcon from "../../public/svgs/instagram.svg?raw";
+---
+
+<section id="contact" class="w-full py-12 md:py-24 lg:py-32">
+  <div class="container px-4 md:px-6">
+    <h2
+      class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8"
+    >
+      Contacto
+    </h2>
+    <div class="grid gap-6 lg:grid-cols-2">
+      <Card>
+        <div slot="content" class="p-6">
+          <form class="space-y-4">
+            <Input placeholder="Nombre" />
+            <Input placeholder="Email" type="email" />
+            <Input placeholder="Celular" type="tel" />
+            <TextArea placeholder="Message" />
+            <Button
+              label="Send Message"
+              type="submit"
+              class="w-full bg-[#03ffff] text-black hover:bg-[#03ffff]/90"
+            />
+          </form>
+        </div>
+      </Card>
+      <Card>
+        <div slot="content" class="p-6 space-y-4">
+          <div class="flex flex-col gap-5 md:flex-row">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center space-x-4">
+                <Fragment set:html={MapIcon} />
+                <div>
+                  <h3 class="font-bold">Dirección</h3>
+                  <p class="text-gray-600">Necochea 181, Ramos Mejía</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <Fragment set:html={PhoneIcon} />
+                <div>
+                  <h3 class="font-bold">Teléfono</h3>
+                  <p class="text-gray-600">(+54) 4656-6900</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <Fragment set:html={EmailIcon} />
+                <div>
+                  <h3 class="font-bold">Email</h3>
+                  <p class="text-gray-600">info@harmonyhairsalon.com</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex flex-1 items-end justify-center gap-8 md:pr-10 md:flex-col"
+            >
+              <a
+                href="https://api.whatsapp.com/send?phone=%2B541136705895"
+                target="_blank"
+                rel="noopener"><Fragment set:html={WhatsappIcon} /></a
+              >
+              <a
+                href="https://www.facebook.com/simbiosispeluqueria"
+                target="_blank"
+                rel="noopener"><Fragment set:html={FacebookIcon} /></a
+              >
+              <a
+                href="https://www.instagram.com/simbiosispeluqueria"
+                target="_blank"
+                rel="noopener"><Fragment set:html={InstagramIcon} /></a
+              >
+            </div>
+          </div>
+          <div class="w-full rounded-md overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13129.893379351852!2d-58.567035!3d-34.642747!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc7ef99ae402f%3A0x3ec754ef4170dda4!2sSimbiosis%20Peluquer%C3%ADa!5e0!3m2!1ses-419!2sar!4v1724292015580!5m2!1ses-419!2sar"
+              width="650"
+              height="200"
+              style="border:0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </div>
 </section>
+
+<style>
+  iframe {
+    max-width: 100%;
+    height: 200px;
+  }
+</style>

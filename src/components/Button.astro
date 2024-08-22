@@ -6,15 +6,23 @@ interface Props {
   onClick?: string;
   class?: string;
   href?: string;
+  type?: "button" | "submit" | "reset";
 }
 
-const {label, variant = "primary", fullWidth, href, onClick} = Astro.props;
+const {
+  label,
+  variant = "primary",
+  fullWidth,
+  href,
+  type,
+  onClick,
+} = Astro.props;
 const Component = href ? "a" : "button";
 ---
 
 <Component
   href={href ?? undefined}
-  type="button"
+  type={type ?? "button"}
   onclick={onClick}
   class={`button ${variant} ${Astro.props.class} ${fullWidth && "full-width"}`}
 >

@@ -1,16 +1,20 @@
 ---
 interface Props {
-  class: string;
+  class?: string;
 }
 ---
 
 <div
-  class="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden"
+  class={`rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden ${Astro.props.class}`}
   data-id="24"
   data-v0-t="card"
 >
   <slot name="header" />
-  <div class="p-4" data-id="26">
-    <slot name="content" />
-  </div>
+  {
+    Astro.slots.has("content") && (
+      <div class="p-4" data-id="26">
+        <slot name="content" />
+      </div>
+    )
+  }
 </div>
