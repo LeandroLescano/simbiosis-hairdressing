@@ -1,5 +1,5 @@
 ---
-import NavbarItem from "@components/Navbar/NavbarItem.astro";
+import Navbar from "@/components/Navbar/Navbar.astro";
 interface Props {
   title: string;
 }
@@ -22,39 +22,7 @@ const {title} = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <header
-      class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60"
-    >
-      <nav
-        class="px-10 py-3 border-b-[1px] flex place-content-between items-center"
-      >
-        <a href="#about">
-          <img src="/svgs/logo.svg" />
-        </a>
-        <div class="flex gap-9">
-          <NavbarItem
-            text="Nosotros"
-            class="text-sm font-medium"
-            section="about"
-          />
-          <NavbarItem
-            text="Servicios"
-            class="text-sm font-medium"
-            section="services"
-          />
-          <NavbarItem
-            text="Galería"
-            class="text-sm font-medium"
-            section="gallery"
-          />
-          <NavbarItem
-            text="Contacto"
-            class="text-sm font-medium"
-            section="contact"
-          />
-        </div>
-      </nav>
-    </header>
+    <Navbar />
     <slot />
     <footer
       class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t"
@@ -79,6 +47,16 @@ const {title} = Astro.props;
     );
     scroll-behavior: smooth;
   }
+
+  @media (max-width: 768px) {
+    section:first-child {
+      scroll-margin-top: calc(57px * 2);
+    }
+    section:not(:first-child) {
+      scroll-margin-top: 57px;
+    }
+  }
+
   html {
     font-family: "SpaceGrotesk", system-ui, sans-serif;
   }

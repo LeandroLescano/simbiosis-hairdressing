@@ -1,0 +1,105 @@
+---
+import NavbarItem from "./NavbarItem.astro";
+---
+
+<header class="sticky top-0 z-50 w-full">
+  <div class="relative">
+    <nav
+      class="px-4 py-3 border-b-[1px] flex justify-between items-center md:px-10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+    >
+      <a href="#about">
+        <img src="/svgs/logo.svg" class="h-8" />
+      </a>
+      <div class="md:hidden">
+        <button
+          id="mobile-menu-button"
+          class="text-gray-500 hover:text-gray-700 focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="hidden md:flex gap-9">
+        <NavbarItem
+          text="Nosotros"
+          class="text-sm font-medium"
+          section="about"
+        />
+        <NavbarItem
+          text="Servicios"
+          class="text-sm font-medium"
+          section="services"
+        />
+        <NavbarItem
+          text="Galería"
+          class="text-sm font-medium"
+          section="gallery"
+        />
+        <NavbarItem
+          text="Contacto"
+          class="text-sm font-medium"
+          section="contact"
+        />
+      </div>
+    </nav>
+    <div
+      id="mobile-menu"
+      class="max-h-0 absolute w-full overflow-hidden md:hidden transition-all duration-300 bg-white/95 backdrop-blur-sm supports-[backdrop-filter]:bg-white/60"
+    >
+      <div class="flex flex-col gap-4 p-4">
+        <NavbarItem
+          text="Nosotros"
+          class="text-sm font-medium"
+          section="about"
+        />
+        <NavbarItem
+          text="Servicios"
+          class="text-sm font-medium"
+          section="services"
+        />
+        <NavbarItem
+          text="Galería"
+          class="text-sm font-medium"
+          section="gallery"
+        />
+        <NavbarItem
+          text="Contacto"
+          class="text-sm font-medium"
+          section="contact"
+        />
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const navButtons = document.querySelectorAll("[role='navigation']");
+
+  function toggleNavbar() {
+    mobileMenu?.classList.toggle("max-h-0");
+    mobileMenu?.classList.toggle("max-h-60");
+  }
+
+  navButtons.forEach((navButton) => {
+    navButton.addEventListener("click", () => {
+      toggleNavbar();
+    });
+  });
+
+  mobileMenuButton?.addEventListener("click", () => {
+    toggleNavbar();
+  });
+</script>
