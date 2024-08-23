@@ -9,10 +9,10 @@ import Card from "@/components/Card.astro";
     >
       Nuestros trabajos
     </h2>
-    <div class="grid gap-6 lg:grid-cols-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
       {
         [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-          <Card class="overflow-hidden" animated>
+          <Card class="overflow-hidden h-auto max-w-full" animated>
             <img
               src="https://picsum.photos/600/400.jpg"
               alt={`Hairstyle ${item}`}
