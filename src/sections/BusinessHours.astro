@@ -129,9 +129,9 @@ const businessHours = [
   ];
   const daysText = document.querySelectorAll(".name-day");
   const currentDay = new Date().getDay() - 1;
-  console.log(new Date());
   const businessHours = document.querySelectorAll("#business-hour");
   businessHours[currentDay].classList.add("bg-cyan-50");
+  businessHours[currentDay].classList.remove("bg-white");
 
   function setDaysText() {
     const currentWidh = screen.width;
