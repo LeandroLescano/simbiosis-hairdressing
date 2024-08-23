@@ -21,20 +21,21 @@ const businessHours = [
     >
       Horarios de atención
     </h2>
-    <div class="max-w-3xl mx-auto">
-      <div class="grid grid-cols-7 gap-2">
+    <div class="max-w-xl lg:max-w-3xl mx-auto">
+      <div id="business-hour-list" class="grid grid-cols-7 gap-4">
         {
           businessHours.map((day) => (
-            <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md">
-              <h3 class="font-bold text-lg mb-2">{day.day.slice(0, 3)}</h3>
-              {day.open ? (
-                <>
-                  <Fragment set:html={CheckIcon} />
-                  <p class="text-xs text-center mt-2">{day.hours}</p>
-                </>
-              ) : (
-                <Fragment set:html={CrossIcon} />
-              )}
+            <div
+              id="business-hour"
+              class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md"
+            >
+              <h3 class="font-bold text-lg mb-2 name-day">
+                {day.day.slice(0, 3)}
+              </h3>
+              <Fragment set:html={day.open ? CheckIcon : CrossIcon} />
+              <p class="text-xs text-center mt-2">
+                {day.open ? day.hours : "Cerrado"}
+              </p>
             </div>
           ))
         }
@@ -42,3 +43,111 @@ const businessHours = [
     </div>
   </div>
 </section>
+
+<style>
+  #business-hour-list {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  #business-hour {
+    width: 100px;
+  }
+
+  #business-hour.current {
+    background-color: red;
+  }
+
+  @media (min-width: 460px) and (max-width: 1024px) {
+    #business-hour-list {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 8px;
+      justify-items: center;
+    }
+    #business-hour:nth-child(odd) {
+      grid-row: 1;
+    }
+
+    #business-hour:nth-child(even) {
+      grid-row: 2;
+    }
+
+    #business-hour:nth-child(odd) {
+      grid-column: span 1;
+    }
+
+    #business-hour:nth-child(2) {
+      grid-column: 1 / span 2;
+    }
+
+    #business-hour:nth-child(4) {
+      grid-column: 2 / span 2;
+    }
+
+    #business-hour:nth-child(6) {
+      grid-column: 3 / span 2;
+    }
+  }
+
+  @media (max-width: 460px) {
+    #business-hour-list {
+      grid-template: none;
+    }
+
+    #business-hour {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 20px;
+    }
+
+    #business-hour > * {
+      flex: 1;
+    }
+
+    #business-hour > :nth-child(1) {
+      flex: 0.75;
+    }
+
+    h3 {
+      margin-bottom: 0;
+    }
+  }
+</style>
+
+<script>
+  const days = [
+    "Lunes",
+    "Martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado",
+    "Domingo",
+  ];
+  const daysText = document.querySelectorAll(".name-day");
+  const currentDay = new Date().getDay() - 1;
+  console.log(new Date());
+  const businessHours = document.querySelectorAll("#business-hour");
+  businessHours[currentDay].classList.add("bg-cyan-50");
+
+  function setDaysText() {
+    const currentWidh = screen.width;
+
+    daysText.forEach((d, i) => {
+      if (currentWidh < 460) {
+        d.textContent = days[i];
+      } else {
+        d.textContent = days[i].slice(0, 3);
+      }
+    });
+  }
+
+  setDaysText();
+
+  window.addEventListener("resize", () => {
+    setDaysText();
+  });
+</script>
