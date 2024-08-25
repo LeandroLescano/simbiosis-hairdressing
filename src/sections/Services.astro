@@ -1,5 +1,65 @@
 ---
 import Card from "@/components/Card.astro";
+
+const featuredServices = [
+  {
+    name: "Cortes de pelo",
+    image: "/img/home-service.webp",
+  },
+  {
+    name: "Tratamientos",
+    image: "/img/hair-treatment.webp",
+  },
+  {
+    name: "Venta de productos",
+    image: "/img/products.webp",
+  },
+];
+
+const serviceCategories = [
+  {
+    name: "Coloración",
+    services: [
+      "Decapaje",
+      "Balayage",
+      "Babylights",
+      "Foilyage",
+      "French glossing",
+      "Smoky hair",
+      "French brunette",
+      "Mechas fantasía",
+      "French Balayage",
+      "Tricotage",
+    ],
+  },
+  {
+    name: "Ocasiones especiales",
+    services: ["Novias & Madrinas", "Maquillaje", "Bubble Ponytail"],
+  },
+  {
+    name: "Tratamientos de cabello",
+    services: ["Metal detox", "Transparencias", "Quita de extensiones"],
+  },
+  {
+    name: "Servicios de uñas",
+    services: [
+      "Semipermanentes",
+      "Reconstrucción en acrílico",
+      "Esmaltado",
+      "Esmaltado semipermanente",
+    ],
+  },
+  {
+    name: "Servicios de belleza",
+    services: [
+      "Depilación facial",
+      "Perfilado de cejas",
+      "Microblanding",
+      "Lifting de pestañas",
+      "Extensiones de pestañas",
+    ],
+  },
+];
 ---
 
 <section id="services" class="w-full py-12 md:py-24 lg:py-32">
@@ -9,47 +69,87 @@ import Card from "@/components/Card.astro";
     >
       Nuestros servicios
     </h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    <div class="grid gap-6 md:grid-cols-3 mb-6">
       {
-        [
-          {
-            name: "Corte de pelo",
-            image: "https://picsum.photos/600/400.jpg",
-          },
-          {
-            name: "Coloraciones",
-            image: "https://picsum.photos/600/400.jpg",
-          },
-          {
-            name: "Peinados",
-            image: "https://picsum.photos/600/400.jpg",
-          },
-          {
-            name: "Manicura",
-            image: "https://picsum.photos/600/400.jpg",
-          },
-          {
-            name: "Venta de productos",
-            image: "https://picsum.photos/600/400.jpg",
-          },
-          {
-            name: "Domicilios",
-            image: "https://picsum.photos/600/400.jpg",
-          },
-        ].map((service) => (
-          <Card class="overflow-hidden" animated>
+        featuredServices.map((service) => (
+          <Card class="overflow-hidden">
             <img
               slot="header"
               src={service.image}
               alt={service.name}
-              class="w-full h-48 object-cover"
+              class="w-full h-52 object-cover"
             />
-            <h3 slot="content" class="text-xl font-bold mb-2">
-              {service.name}
-            </h3>
+            <div slot="content">
+              <h3 class="text-xl font-bold mb-2">{service.name}</h3>
+            </div>
           </Card>
         ))
       }
     </div>
+    <div class="flex flex-col flex-wrap md:flex-row gap-4 mb-8">
+      {
+        serviceCategories.map((category) => {
+          return (
+            <div class="flex-1 h-fit min-w-60 shadow-md cursor-pointer expandable-container rounded-lg hover:bg-gray-100 transition-colors">
+              <div class="flex px-4 py-2 items-center justify-between font-medium [&[data-state=open]>svg]:rotate-180 ">
+                <h3 class="text-lg">{category.name}</h3>
+                <svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="transition-all duration-300"
+                >
+                  <path
+                    d="M1 1L7 7L13 1"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div class="expandable rounded-b-lg bg-white px-4 border-t-[1px]">
+                <div class="overflow-hidden divide-y-2">
+                  <div class="py-2">
+                    {category.services.map((service) => (
+                      <p>{service}</p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
   </div>
 </section>
+
+<script>
+  const expandables = document.querySelectorAll(".expandable-container");
+
+  expandables.forEach((exp) => {
+    exp.addEventListener("click", () => {
+      exp.querySelector(".expandable")?.classList.toggle("active");
+      const internalDiv = exp.querySelector("div");
+      if (internalDiv?.hasAttribute("data-state")) {
+        internalDiv.removeAttribute("data-state");
+      } else {
+        internalDiv?.setAttribute("data-state", "open");
+      }
+    });
+  });
+</script>
+
+<style>
+  .expandable {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-in-out;
+  }
+  .expandable.active {
+    grid-template-rows: 2fr;
+  }
+</style>
