@@ -7,6 +7,7 @@ interface Props {
   class?: string;
   href?: string;
   type?: "button" | "submit" | "reset";
+  id?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   fullWidth,
   href,
   type,
+  id,
   onClick,
 } = Astro.props;
 const Component = href ? "a" : "button";
@@ -25,6 +27,7 @@ const Component = href ? "a" : "button";
   type={type ?? "button"}
   onclick={onClick}
   class={`button ${variant} ${Astro.props.class} ${fullWidth && "full-width"}`}
+  id={id}
 >
   {label}
 </Component>

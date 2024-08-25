@@ -14,9 +14,9 @@ import Card from "@/components/Card.astro";
         [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
           <Card class="overflow-hidden h-auto max-w-full" animated>
             <img
-              src="https://picsum.photos/600/400.jpg"
+              src={`/img/gallery-${item}.webp`}
               alt={`Hairstyle ${item}`}
-              class="w-full h-48 object-cover"
+              class="w-full h-80 object-cover"
               slot="header"
             />
           </Card>

@@ -32,7 +32,7 @@ const {title} = Astro.props;
       </p>
       <div class="flex items-center gap-2">
         <p class="text-xs text-gray-500">Powered by CoderMount</p>
-        <img src="/img/iso-codermount.png" width={24} />
+        <img src="/svgs/codermount.svg" width={24} />
       </div>
     </footer>
   </body>
@@ -50,6 +50,10 @@ const {title} = Astro.props;
       white 60%
     );
     scroll-behavior: smooth;
+  }
+
+  section:first-child {
+    scroll-margin-top: 57px;
   }
 
   @media (max-width: 768px) {
