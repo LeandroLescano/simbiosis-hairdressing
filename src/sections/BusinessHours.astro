@@ -128,7 +128,8 @@ const businessHours = [
     "Domingo",
   ];
   const daysText = document.querySelectorAll(".name-day");
-  const currentDay = new Date().getDay() - 1;
+  let currentDay = new Date().getDay() - 1;
+  if (currentDay === -1) currentDay = 6;
   const businessHours = document.querySelectorAll("#business-hour");
   businessHours[currentDay].classList.add("bg-cyan-50");
   businessHours[currentDay].classList.remove("bg-white");
